@@ -2,6 +2,7 @@ package com.example.crudwithvaadin;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -31,8 +32,18 @@ public class MainView extends VerticalLayout {
 		this.addNewBtn = new Button("New customer", VaadinIcon.PLUS.create());
 
 		// build layout
+		H1 title = new H1("Customer Manager");
+		title.getStyle()
+				.set("margin", "0")
+				.set("padding", "1.5em 1em")
+				.set("width", "100%")
+				.set("box-sizing", "border-box")
+				.set("color", "white")
+				.set("text-align", "center")
+				.set("background", "linear-gradient(90deg, #1676f3, #a239ea)");
+
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
-		add(actions, grid, editor);
+		add(title, actions, grid, editor);
 
 		grid.setHeight("300px");
 		grid.setColumns("id", "firstName", "lastName");
