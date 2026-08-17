@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(git *)",
+            "command": "jq -r '.tool_input.command // empty' | { read -r cmd; case \"$cmd\" in *\"checkout main\"*|*\"checkout master\"*|*\"switch main\"*|*\"switch master\"*) git pull ;; esac; }",
+            "statusMessage": "Pulling latest from origin..."
+          }
+        ]
+      }
+    ]
+  }
+}
