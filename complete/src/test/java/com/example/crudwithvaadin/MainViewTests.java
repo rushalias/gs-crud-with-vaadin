@@ -39,7 +39,7 @@ public class MainViewTests {
 	public void shouldInitializeTheGridWithCustomerRepositoryData() {
 		int customerCount = (int) this.repository.count();
 
-		then(mainView.grid.getColumns()).hasSize(3);
+		then(mainView.grid.getColumns()).hasSize(6);
 		then(getCustomersInGrid()).hasSize(customerCount);
 	}
 

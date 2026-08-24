@@ -35,6 +35,9 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
 	/* Fields to edit properties in Customer entity */
 	TextField firstName = new TextField("First name");
 	TextField lastName = new TextField("Last name");
+	TextField city = new TextField("City");
+	TextField state = new TextField("State");
+	TextField country = new TextField("Country");
 
 	/* Action buttons */
 	Button save = new Button("Save", VaadinIcon.CHECK.create());
@@ -49,7 +52,7 @@ public class CustomerEditor extends VerticalLayout implements KeyNotifier {
 	public CustomerEditor(CustomerRepository repository) {
 		this.repository = repository;
 
-		add(firstName, lastName, actions);
+		add(firstName, lastName, city, state, country, actions);
 
 		// bind using naming convention
 		binder.bindInstanceFields(this);
