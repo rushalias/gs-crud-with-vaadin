@@ -31,6 +31,8 @@ public class MainView extends VerticalLayout {
 		this.filter = new TextField();
 		this.addNewBtn = new Button("New customer", VaadinIcon.PLUS.create());
 
+		this.getStyle().set("background-color", "azure");
+
 		// build layout
 		H1 title = new H1("Customer Manager");
 		title.getStyle()
@@ -46,7 +48,7 @@ public class MainView extends VerticalLayout {
 		add(title, actions, grid, editor);
 
 		grid.setHeight("300px");
-		grid.setColumns("id", "firstName", "lastName");
+		grid.setColumns("id", "firstName", "lastName", "city", "state", "country");
 		grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
 
 		filter.setPlaceholder("Filter by last name");
