@@ -1,6 +1,7 @@
 package com.example.crudwithvaadin;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -12,6 +13,7 @@ import com.vaadin.flow.router.Route;
 import org.springframework.util.StringUtils;
 
 @Route
+@StyleSheet("context://styles/grid-theme.css")
 public class MainView extends VerticalLayout {
 
 	private final CustomerRepository repo;
