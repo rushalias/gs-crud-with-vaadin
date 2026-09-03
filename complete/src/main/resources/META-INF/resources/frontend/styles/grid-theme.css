@@ -1,0 +1,31 @@
+/* Styling for the customer Grid on MainView.
+ * Lives on the classpath under META-INF/resources/frontend/ (the repo
+ * git-ignores src/main/frontend/) and is pulled in with
+ * @CssImport("./styles/grid-theme.css") on MainView, which injects it as a
+ * global stylesheet. The ::part() selectors reach one shadow level down into
+ * the Vaadin Grid's exposed shadow-DOM parts. */
+
+/* Column headers sit on a solid brand-blue bar that matches the gradient page
+ * header. The bold, larger header text itself is set on a Span in MainView -
+ * the Grid's own [part~="header-cell"] font rules outrank a ::part() selector,
+ * so styling the header component directly is the reliable route. */
+vaadin-grid::part(header-cell) {
+    background-color: #1676f3;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+}
+
+/* Alternating row colours so a single line is easy to follow across
+ * all columns. Tints are drawn from the blue -> purple header gradient. */
+vaadin-grid::part(even-row-cell) {
+    background-color: #eaf2ff;
+}
+
+vaadin-grid::part(odd-row-cell) {
+    background-color: #f6ecff;
+}
+
+/* Keep the selected row clearly distinct from the stripes. */
+vaadin-grid::part(selected-row-cell) {
+    background-color: #cfe3ff;
+}

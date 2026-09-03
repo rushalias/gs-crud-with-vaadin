@@ -1,9 +1,10 @@
 package com.example.crudwithvaadin;
 
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dependency.StyleSheet;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -13,7 +14,7 @@ import com.vaadin.flow.router.Route;
 import org.springframework.util.StringUtils;
 
 @Route
-@StyleSheet("context://styles/grid-theme.css")
+@CssImport("./styles/grid-theme.css")
 public class MainView extends VerticalLayout {
 
 	private final CustomerRepository repo;
@@ -52,6 +53,15 @@ public class MainView extends VerticalLayout {
 		grid.setHeight("300px");
 		grid.setColumns("id", "firstName", "lastName", "city", "state", "country");
 		grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
+
+		// Emphasise the column headers: bold and larger than the row text.
+		// (The blue header bar and alternating row colours come from
+		// styles/grid-theme.css.)
+		grid.getColumns().forEach(column -> {
+			Span header = new Span(column.getHeaderText());
+			header.getStyle().set("font-weight", "700").set("font-size", "15px");
+			column.setHeader(header);
+		});
 
 		filter.setPlaceholder("Filter by last name");
 
